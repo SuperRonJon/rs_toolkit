@@ -1,6 +1,7 @@
 import math
 import sys
 import webbrowser
+import ping
 
 
 def get_experience(level):
@@ -57,6 +58,13 @@ def execute_action(arguments):
             to_add = " " + word
             search_term += to_add
         search_wiki(search_term)
+    elif action == 'ping':
+        arg = arguments[1]
+        if arg == 'all':
+            ping.ping_all()
+        else:
+            world = int(arg)
+            ping.ping_specific(world)
     elif action == 'help':
         display_help()
     else:
