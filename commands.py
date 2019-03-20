@@ -34,6 +34,7 @@ def sub(arguments):
     target_level = int(arguments[0])
     current_xp = int(arguments[1])
     xp_remaining = rs.get_experience(target_level) - current_xp
+    print("{:,} xp remaining until level {}".format(xp_remaining, target_level))
 
 
 def search(arguments):
