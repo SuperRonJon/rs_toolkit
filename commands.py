@@ -9,6 +9,7 @@ def xp(arguments):
     next_level = rs.get_next_level(exp)
     remaining = rs.get_remaining_xp(exp)
     print("Level {} with {:,} xp until {}".format(current_level, remaining, next_level))
+    return remaining
 
 
 def level(arguments):
@@ -16,6 +17,7 @@ def level(arguments):
     level = int(arguments[0])
     level_xp = rs.get_experience(level)
     print("{:,} xp".format(level_xp))
+    return level_xp
 
 
 def add(arguments):
@@ -27,6 +29,7 @@ def add(arguments):
     next_level = rs.get_next_level(new_xp)
     remaining = rs.get_remaining_xp(new_xp)
     print("Level {} with {:,} xp until {}".format(new_level, remaining, next_level))
+    return remaining
 
 
 def sub(arguments):
@@ -35,6 +38,13 @@ def sub(arguments):
     current_xp = int(arguments[1])
     xp_remaining = rs.get_experience(target_level) - current_xp
     print("{:,} xp remaining until level {}".format(xp_remaining, target_level))
+    return xp_remaining
+
+
+def div(previous, divide_with):
+    result = float(previous) / float(divide_with)
+    print("Result: {}".format(result))
+    return result
 
 
 def search(arguments):
@@ -43,6 +53,7 @@ def search(arguments):
     for word in arguments[1:]:
         search_term += " " + word
     lookup.search_wiki(search_term)
+    return None
 
 
 def ping(arguments):
@@ -53,6 +64,7 @@ def ping(arguments):
         world = int(arguments[0])
         ping = lookup.ping_specific(world)
         print(f'World {world}: {ping}ms')
+    return None
 
 
 def help(arguments):
@@ -62,6 +74,7 @@ def help(arguments):
     print("add [current_xp] [additional_xp]-\tReturns the level at [current_xp] + [additional_xp]")
     print("sub [target_level] [current_xp]-\tReturns the experience difference between [current_xp] and [target_level]")
     print("search [query]-\t\t\t\tOpens a wiki search of [query]")
+    return None
 
 
 def argument_assertion(num_args, arguments):
