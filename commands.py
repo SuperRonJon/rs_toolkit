@@ -41,8 +41,12 @@ def sub(arguments):
     return xp_remaining
 
 
-def div(previous, divide_with):
-    result = float(previous) / float(divide_with)
+def div(previous, arguments):
+    assert 1 <= len(arguments) <= 2, 'Invalid number of arguments'
+    if len(arguments) == 1:
+        result = float(previous) / float(arguments[0])
+    else:
+        result = float(arguments[0]) / float(arguments[1])
     print("Result: {}".format(result))
     return result
 

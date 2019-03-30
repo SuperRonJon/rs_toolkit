@@ -11,7 +11,7 @@ while args != "exit":
         command = args.pop(0)
         if command == "div":
             if prev_result is not None:
-                prev_result = commands.div(prev_result, args[0])
+                prev_result = commands.div(prev_result, args)
             else:
                 print("Cannot divide after that command.")
         else:
