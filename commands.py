@@ -1,6 +1,8 @@
 import xp_calc as rs
 import lookup
 
+from farming.farming_profit import get_profit_per_herb
+
 
 def xp(arguments):
     argument_assertion(1, arguments)
@@ -68,6 +70,20 @@ def ping(arguments):
         world = int(arguments[0])
         ping = lookup.ping_specific(world)
         print(f'World {world}: {ping}ms')
+    return None
+
+
+def herbs(arguments):
+    if len(arguments) == 0:
+        herbs_list = ['ranarr', 'toadflax', 'irit', 'avantoe', 'kwuarm', 'snapdragon', 'cadantine', 'lantadyme',
+                      'dwarf weed', 'torstol']
+    else:
+        herbs_list = arguments
+
+    profits = get_profit_per_herb(herbs_list)
+    for name, profit in profits.items():
+        print('{}: {:,}'.format(name, profit))
+
     return None
 
 
