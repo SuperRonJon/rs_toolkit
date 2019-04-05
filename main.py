@@ -1,4 +1,5 @@
 import commands
+import osrs_net
 
 print("Welcome to RS Toolkit\ntype 'exit' to quit, 'help' for a list of commands")
 
@@ -20,4 +21,4 @@ while args != "exit":
                 if cur_result is not None:
                     prev_result = cur_result
             except AttributeError as e:
-                print(e)
+                print('No command {} found'.format(command))
