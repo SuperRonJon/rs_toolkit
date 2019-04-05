@@ -10,15 +10,15 @@ def create_herb(herb_name):
         herb_name = 'ranarr weed'
     elif herb_name == 'irit':
         herb_name = 'irit leaf'
-    herb_id = Item.get_ids(herb_name)
-    if isinstance(herb_id, list):
+    herb_id = Item.item_id(herb_name)
+    if herb_id is None:
         raise ValueError('Could not find herb {}'.format(herb_name))
     if herb_name == 'ranarr weed' or herb_name == 'irit leaf':
         seed_name = herb_name.split(' ')[0] + ' seed'
     else:
         seed_name = herb_name + ' seed'
-    seed_id = Item.get_ids(seed_name)
-    if isinstance(seed_id, list):
+    seed_id = Item.item_id(seed_name)
+    if seed_id is None:
         raise ValueError('Could not find seed {}'.format(herb_name + " seed"))
 
     herb = GrandExchange.item(herb_id)
