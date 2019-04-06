@@ -1,7 +1,8 @@
 import xp_calc as rs
-import lookup
+import external
 
 from farming.farming_profit import get_profit_per_herb
+from osrs_net.hiscores import lookup
 
 
 def xp(arguments):
@@ -43,12 +44,9 @@ def sub(arguments):
     return xp_remaining
 
 
-def div(previous, arguments):
-    assert 1 <= len(arguments) <= 2, 'Invalid number of arguments'
-    if len(arguments) == 1:
-        result = float(previous) / float(arguments[0])
-    else:
-        result = float(arguments[0]) / float(arguments[1])
+def div(arguments):
+    argument_assertion(2, arguments)
+    result = float(arguments[0]) / float(arguments[1])
     print("Result: {}".format(result))
     return result
 
@@ -58,17 +56,17 @@ def search(arguments):
     search_term = arguments[0]
     for word in arguments[1:]:
         search_term += " " + word
-    lookup.search_wiki(search_term)
+    external.search_wiki(search_term)
     return None
 
 
 def ping(arguments):
     argument_assertion(1, arguments)
     if arguments[0] == 'all':
-        lookup.ping_all()
+        external.ping_all()
     else:
         world = int(arguments[0])
-        ping = lookup.ping_specific(world)
+        ping = external.ping_specific(world)
         print(f'World {world}: {ping}ms')
     return None
 
@@ -85,6 +83,16 @@ def herbs(arguments):
         print('{}: {:,}'.format(name, profit))
 
     return None
+
+
+def hiscores(arguments):
+    player_name = " ".join(arguments[:-1])
+
+    skill = arguments[len(arguments) - 1]
+    player = lookup(player_name)
+    xp = player.skills[skill].experience
+    print('{:,} experience'.format(xp))
+    return xp
 
 
 def help(arguments):
