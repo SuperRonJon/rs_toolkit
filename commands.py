@@ -80,7 +80,7 @@ def herbs(arguments):
 
     profits = get_profit_per_herb(herbs_list)
     for name, profit in profits.items():
-        print('{}: {:,}'.format(name, profit))
+        print('{}: {:,} per seed'.format(name, profit))
 
     return None
 
