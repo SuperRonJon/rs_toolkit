@@ -32,7 +32,7 @@ def add(arguments):
     next_level = rs.get_next_level(new_xp)
     remaining = rs.get_remaining_xp(new_xp)
     print("Level {} with {:,} xp until {}".format(new_level, remaining, next_level))
-    return remaining
+    return new_xp
 
 
 def sub(arguments):
