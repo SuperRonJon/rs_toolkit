@@ -97,11 +97,16 @@ def hiscores(arguments):
 
 def help(arguments):
     print("COMMANDS\n=====================")
+    print("The term 'prev' can be used instead of an argument to insert the value returned by the previous command.")
     print("level [level]-\t\t\t\tReturns the experience points required for [level]")
     print("xp [xp]-\t\t\t\tReturns the level at [xp] experience points")
     print("add [current_xp] [additional_xp]-\tReturns the level at [current_xp] + [additional_xp]")
     print("sub [target_level] [current_xp]-\tReturns the experience difference between [current_xp] and [target_level]")
+    print("div [value1] [value2]-\t\t\tReturns the result of divion of value1/value2")
+    print("herbs [herb_list]-\t\t\tReturns the profit per seed of each herb given, herb_list must be a list of lowercase herb names separated by spaces only, if no list is given all will be returned")
+    print("hiscores [player_name] [skill]-\t\tReturns the current experience in [skill] for [player_name]")
     print("search [query]-\t\t\t\tOpens a wiki search of [query]")
+    print("ping [world]-\t\t\t\tReturns the ping to given world number")
     return None
 
 
