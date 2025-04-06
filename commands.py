@@ -2,7 +2,7 @@ import xp_calc as rs
 import external
 
 from farming.farming_profit import get_profit_per_herb
-from osrs_net.hiscores import lookup
+from osrs_net.hiscores import lookup_player
 
 
 def xp(arguments):
@@ -88,9 +88,14 @@ def herbs(arguments):
 def hiscores(arguments):
     player_name = " ".join(arguments[:-1])
 
-    skill = arguments[len(arguments) - 1]
-    player = lookup(player_name)
-    xp = player.skills[skill].experience
+    skill = arguments[len(arguments) - 1].lower()
+    player = lookup_player(player_name)
+    try:
+        xp = player.stats[skill].experience
+    except KeyError:
+        print(f"Unable to get info for skill {skill}")
+        return None
+
     print('{:,} experience'.format(xp))
     return xp
 

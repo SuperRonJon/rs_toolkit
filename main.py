@@ -1,5 +1,4 @@
 import commands
-import osrs_net
 
 print("Welcome to RS Toolkit\ntype 'exit' to quit, 'help' for a list of commands")
 

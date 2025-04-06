@@ -10,21 +10,21 @@ def create_herb(herb_name):
         herb_name = 'ranarr weed'
     elif herb_name == 'irit':
         herb_name = 'irit leaf'
-    herb_id = Item.item_id(herb_name)
+    herb_id = GrandExchange.item_id_from_name(herb_name)
     if herb_id is None:
         raise ValueError('Could not find herb {}'.format(herb_name))
     if herb_name == 'ranarr weed' or herb_name == 'irit leaf':
         seed_name = herb_name.split(' ')[0] + ' seed'
     else:
         seed_name = herb_name + ' seed'
-    seed_id = Item.item_id(seed_name)
+    seed_id = GrandExchange.item_id_from_name(seed_name)
     if seed_id is None:
         raise ValueError('Could not find seed {}'.format(herb_name + " seed"))
 
-    herb = GrandExchange.item(herb_id)
-    seed = GrandExchange.item(seed_id)
+    herb_price = GrandExchange.latest_price_by_id(herb_id)
+    seed_price = GrandExchange.latest_price_by_id(seed_id)
 
-    return Herb(herb_name, herb.price_data['price'], seed.price_data['price'])
+    return Herb(herb_name, herb_price['low'], seed_price['high'])
 
 
 def get_herb_list(herb_names):
